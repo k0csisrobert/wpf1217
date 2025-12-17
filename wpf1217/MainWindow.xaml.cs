@@ -123,5 +123,17 @@ namespace wpf1217
                 })
                 .ToList();
         }
+
+        private void tipusAtlag(object sender, RoutedEventArgs e)
+        {
+            termekDG.ItemsSource = termekek
+                .GroupBy(x => x.Kategoria)
+                .Select(g => new
+                {
+                    Kategoria = g.Key,
+                    AtlagAr = g.Average(x => x.Ar)
+                })
+                .ToList();
+        }
     }
 }

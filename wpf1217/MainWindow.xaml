@@ -27,6 +27,7 @@
                     <Button Content="Minden D típus > 500 Ft?" Width="150" Margin="5" Click="dTipus500" />
                     <Button Content="Név + összérték ABC" Width="150" Margin="5" Click="nevOsszABC" />
                     <Button Content="Típus db + összérték" Width="150" Margin="5" Click="tipusOssz" />
+                    <Button Content="Típus átlagár" Width="150" Margin="5" Click="tipusAtlag" />
                 </WrapPanel>
             </GroupBox>
         </ScrollViewer>
