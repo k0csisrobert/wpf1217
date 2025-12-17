@@ -20,7 +20,19 @@ namespace wpf1217
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            ujtermek = new ItemModel(nev.Text, int.Parse(mennyiseg.Text), int.Parse(ar.Text), kategoria.Text);
+            int mennyiseg_ =0;
+            int ar_ = 0;
+            if (nev.Text=="" 
+                || !int.TryParse(mennyiseg.Text,out mennyiseg_) 
+                || !int.TryParse(ar.Text, out ar_)
+                || kategoria.SelectedItem==null)
+            {
+                MessageBox.Show("Hiba",
+                    "Nem megfelelő adatok a beviteli mezőkben!", 
+                    MessageBoxButton.OK, 
+                    MessageBoxImage.Error);
+            }
+            ujtermek = new ItemModel(nev.Text, mennyiseg_, ar_, kategoria.Text);
             DialogResult = true;
         }
     }
