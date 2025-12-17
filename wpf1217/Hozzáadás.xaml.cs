@@ -1,14 +1,24 @@
-﻿using System.Windows;
-using static wpf1217.MainWindow;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
 
 namespace wpf1217
 {
-    
-    public partial class Hozzáadás : Window
-    {
 
+    public partial class Hozzaadas : Window
+    {
         public ItemModel ujtermek;
-        public Hozzáadás()
+        public Hozzaadas()
         {
             InitializeComponent();
         }
@@ -18,22 +28,26 @@ namespace wpf1217
             DialogResult = false;
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void ok(object sender, RoutedEventArgs e)
         {
-            int mennyiseg_ =0;
+            int mennyiseg_ = 0;
             int ar_ = 0;
-            if (nev.Text=="" 
-                || !int.TryParse(mennyiseg.Text,out mennyiseg_) 
+            if (nev.Text == ""
+                || !int.TryParse(mennyiseg.Text, out mennyiseg_)
                 || !int.TryParse(ar.Text, out ar_)
-                || kategoria.SelectedItem==null)
+                || kategoria.SelectedItem == null)
             {
-                MessageBox.Show("Hiba",
-                    "Nem megfelelő adatok a beviteli mezőkben!", 
-                    MessageBoxButton.OK, 
-                    MessageBoxImage.Error);
+                MessageBox.Show(
+                    "Nem megfelelő adatok a beviteli mezőkben!"
+                    , "Hiba"
+                    , MessageBoxButton.OK
+                    , MessageBoxImage.Error);
             }
-            ujtermek = new ItemModel(nev.Text, mennyiseg_, ar_, kategoria.Text);
-            DialogResult = true;
+            else
+            {
+                ujtermek = new ItemModel(nev.Text, mennyiseg_, ar_, kategoria.Text);
+                DialogResult = true;
+            }
         }
     }
 }
