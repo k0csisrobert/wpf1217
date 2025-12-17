@@ -55,7 +55,73 @@ namespace wpf1217
 
         private void torles(object sender, RoutedEventArgs e)
         {
+            if (termekDG.SelectedItem != null 
+                && termekDG.SelectedItem is ItemModel)
+            {
+                termekek.Remove((ItemModel)termekDG.SelectedItem);
+                termekDG.ItemsSource = termekek;
+                termekDG.Items.Refresh();
+            }
+        }
 
+        private void tipus3leg(object sender, RoutedEventArgs e)
+        {
+            termekDG.ItemsSource=termekek.Where(x => x.Kategoria == "A")
+                .OrderByDescending(x => x.Osszesen)
+                .Take(3)
+                .ToList();
+        }
+
+        private void top5ossz(object sender, RoutedEventArgs e)
+        {
+            termekDG.ItemsSource=termekek
+                .OrderByDescending(x => x.Osszesen)
+                .Take(5)
+                .ToList();
+        }
+
+        private void kedvOssz(object sender, RoutedEventArgs e)
+        {
+            termekDG.ItemsSource = termekek.Where(x => x.Mennyiseg > 1)
+                .Select(z=>new {Nev=z.Nev, Osszeg=z.Osszesen});
+        }
+
+        private void adatBe(object sender, RoutedEventArgs e)
+        {
+            termekDG.ItemsSource = termekek;
+            termekDG.Items.Refresh();
+        }
+
+        private void arCsokk(object sender, RoutedEventArgs e)
+        {
+            termekDG.ItemsSource = termekek.OrderByDescending(x => x.Ar);
+        }
+
+        private void dTipus500(object sender, RoutedEventArgs e)
+        {
+            termekDG.ItemsSource = termekek
+                .Where(x => x.Kategoria == "D" && x.Ar < 500)
+                .ToList();
+        }
+
+        private void nevOsszABC(object sender, RoutedEventArgs e)
+        {
+            termekDG.ItemsSource = termekek
+                .OrderBy(x => x.Nev)
+                .ThenByDescending(x => x.Osszesen)
+                .ToList();
+        }
+
+        private void tipusOssz(object sender, RoutedEventArgs e)
+        {
+            termekDG.ItemsSource = termekek
+                .GroupBy(x => x.Kategoria)
+                .Select(g => new
+                {
+                    Kategoria = g.Key,
+                    Osszesen = g.Sum(x => x.Osszesen)
+                })
+                .ToList();
         }
     }
 }

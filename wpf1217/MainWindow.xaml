@@ -13,12 +13,20 @@
             <RowDefinition Height="1*"/>
 
         </Grid.RowDefinitions>
-        <DataGrid Grid.Row="0" x:Name="termekDG" ColumnWidth="*"></DataGrid>
+        <DataGrid Grid.Row="0" x:Name="termekDG" ColumnWidth="*" ></DataGrid>
         <ScrollViewer Grid.Row="1">
             <GroupBox Header="Termékek" Margin="10">
                 <WrapPanel Margin="5">
+                    <Button Content="Adatok Betöltése" Width="150" Margin="5" Click="adatBe"/>
                     <Button Content="Hozzáadás" Width="150" Margin="5" Click="hozzaadas"/>
-                    <Button Content="Törlés" Width="150" Margin="5" Click="torles" />
+                    <Button Content="Törlés" Width="150" Margin="5" Click="torles"/>
+                    <Button Content="A típus 3 legdrágább" Width="150" Margin="5" Click="tipus3leg"/>
+                    <Button Content="Top 5 összérték szerint" Width="150" Margin="5" Click="top5ossz"/>
+                    <Button Content="Kedvezményes összlista" Width="150" Margin="5" Click="kedvOssz"/>
+                    <Button Content="Ár szerint csökennő" Width="150" Margin="5" Click="arCsokk" />
+                    <Button Content="Minden D típus > 500 Ft?" Width="150" Margin="5" Click="dTipus500" />
+                    <Button Content="Név + összérték ABC" Width="150" Margin="5" Click="nevOsszABC" />
+                    <Button Content="Típus db + összérték" Width="150" Margin="5" Click="tipusOssz" />
                 </WrapPanel>
             </GroupBox>
         </ScrollViewer>
